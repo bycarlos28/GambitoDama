@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Gambito de dama</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/board.css') }}">
+    </head>
+    <body>
+        {% if notification %}
+            <div class="alert-box">
+                <p class="alert">{{notification}}</p>
+            </div>
+        {% endif %}
+        <table>
+            {% for y in range (1, height+1) %}
+                <tr>
+                {% for x in range (1, width+1) %}
+                    {% if y%2==0 %}
+                        {% if x%2==0 %}
+                            <td class="white">
+                                {% if x==position_tower[0] and y==position_tower[1] %} 
+                                    <img id="tower" src="{{ url_for('static', filename='images/tower.png') }}">
+                                {% else %}
+                                    <p>{{x}},{{y}}</p>
+                                {% endif %}
+                            </td>
+                        {% else %}
+                            <td class="grey">
+                                {% if x==position_tower[0] and y==position_tower[1] %} 
+                                    <img id="tower" src="{{ url_for('static', filename='images/tower.png') }}">
+                                {% else %}
+                                    <p>{{x}},{{y}}</p>
+                                {% endif %}
+                            </td>
+                        {% endif %}
+                    {% else %}
+                        {% if x%2==0 %}
+                            <td class="grey">
+                                {% if x==position_tower[0] and y==position_tower[1] %} 
+                                    <img id="tower" src="{{ url_for('static', filename='images/tower.png') }}">
+                                {% else %}
+                                    <p>{{x}},{{y}}</p>
+                                {% endif %}
+                            </td>
+                        {% else %}
+                            <td class="white">
+                                {% if x==position_tower[0] and y==position_tower[1] %} 
+                                    <img id="tower" src="{{ url_for('static', filename='images/tower.png') }}">
+                                {% else %}
+                                    <p>{{x}},{{y}}</p>
+                                {% endif %}
+                            </td>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        <form method="post" action="">
+            <div class="fields">
+                <input type="hidden" name="initial_x" value="{{position_tower[0]}}">
+                <input type="hidden" name="initial_y" value="{{position_tower[1]}}">
+                <label for="final_x">Posició X: </label>
+                <input type="number" id="final_x" min="1" max="{{ width }}" name="final_x" required>
+                <label for="final_y">Posició Y: </label>
+                <input type="number" id="final_y" min="1" max="{{ height }}" name="final_y" required>
+            </div>
+            <div class="fields">
+                <input type="submit" value="Moure torre">
+            </div>
+        </form>
+    </body>
+</html>

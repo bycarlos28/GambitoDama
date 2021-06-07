@@ -1,0 +1,48 @@
+table {
+    border: 10px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}
+
+td {
+    border: 5px solid black;
+    vertical-align: middle;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+}
+
+.grey {
+    background-color: grey;
+}
+
+.white {
+    background-color: white;
+}
+
+#tower {
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.alert-box {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: red;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: 3px solid black;
+    margin-bottom: 10px;
+}
+
+.fields {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.fields > input {
+    display: inline-block;
+}
